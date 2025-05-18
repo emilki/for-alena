@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorry 🌸</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    #start {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2em;
+      padding: 20px 40px;
+      background: white;
+      color: black;
+      border-radius: 15px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    
+
+   
+
+    #flowers {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .flower {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/5934/5934213.png');
+      background-size: cover;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { top: -50px; opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+
+    #message {
+      display: none;
+      font-size: 1.5em;
+      margin-top: 30px;
+      color: white;
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 0 10px #ff69b4;
+      animation: fadeIn 3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div id="start" onclick="triggerKaboom()">Click here</div>
+  <div id="message">🌸 I'm sorry 🌸 
+    Alena, I'm so deeply sorry. You mean so much to me, and every second without you feels empty. I don’t want to just say sorry, I want to show you I’m willing to grow. Please, give me a chance. Please 💖</div>
+  <div id="flowers"></div>
+
+  <script>
+    function triggerKaboom() {
+      document.getElementById('start').style.display = 'none';
+      document.getElementById('message').style.display = 'block';
+      startFlowers();
+      document.body.style.backgroundColor = '#111';
+    }
+
+    function startFlowers() {
+      const container = document.getElementById('flowers');
+      for (let i = 0; i < 30; i++) {
+        const flower = document.createElement('div');
+        flower.className = 'flower';
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.animationDuration = (3 + Math.random() * 5) + 's';
+        flower.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(flower);
+      }
+    }
+  </script>
+</body>
+</html>
